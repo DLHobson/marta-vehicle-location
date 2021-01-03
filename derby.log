@@ -1,0 +1,16 @@
+----------------------------------------------------------------
+Sun Jan 03 10:16:33 EST 2021:
+Booting Derby version The Apache Software Foundation - Apache Derby - 10.14.2.0 - (1828579): instance a816c00e-0176-c8d2-4b6c-00000c30b200 
+on database directory memory:/Users/thinker/development/marta-vehicle-location/48559dfc-cb0f-4524-8a66-b022ca6e4124 with class loader sun.misc.Launcher$AppClassLoader@18b4aac2 
+Loaded from file:/Users/thinker/.m2/repository/org/apache/derby/derby/10.14.2.0/derby-10.14.2.0.jar
+java.vendor=Oracle Corporation
+java.runtime.version=1.8.0_271-b09
+user.dir=/Users/thinker/development/marta-vehicle-location
+os.name=Mac OS X
+os.arch=x86_64
+os.version=10.16
+derby.system.home=null
+Database Class Loader started - derby.database.classpath=''
+----------------------------------------------------------------
+Sun Jan 03 10:16:35 EST 2021:
+Shutting down instance a816c00e-0176-c8d2-4b6c-00000c30b200 on database directory memory:/Users/thinker/development/marta-vehicle-location/48559dfc-cb0f-4524-8a66-b022ca6e4124 with class loader sun.misc.Launcher$AppClassLoader@18b4aac2 

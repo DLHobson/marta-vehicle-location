@@ -1,0 +1,178 @@
+server:
+  port: 9090
+logging:
+  file:
+    name: E:\logs\rtvehicle.txt
+  pattern:
+    file: "%clr(%d{yyyy-MM-dd HH:mm:ss.SSS}){faint} %clr(%5p) %clr(${PID}){magenta} %clr(---){faint} %clr([%15.15t]){faint} %clr(%-40.40logger{39}){cyan} %clr(:){faint} %m%n%wEx"
+spring:
+  application: 
+    name: MARTA Vehicle Location
+  boot: 
+    admin:
+      api-path: /instances
+      client:
+        enabled: TRUE
+        period: 10000
+        url: http://localhost:9090
+        username: admin
+        password: admin
+        connect-timeout: 10000
+    security:
+    user:
+      name: admin
+      password: admin
+  profiles:
+    active:
+    - development
+  task:
+    execution:
+      thread-name-prefix: "RouterMessage-"
+      pool:
+        max-size: 200
+        core-size: 25
+        allow-core-thread-timeout: false
+        queue-capacity: 1000
+        keep-alive: 30
+        threadwait: 500
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+  endpoint:
+    health:
+      show-details: always
+router:
+  message:
+    type: TAIP
+    size: 256
+  listener:
+    protocol: udp
+    ports: 
+      - 1026
+      - 1027
+      - 1028
+      - 1029
+      - 1030
+      - 1031
+      - 1032
+      - 1033
+      - 1034
+      - 1035
+  ftl:  
+    primaryRealmServer: http://mcsmtftldev01:18080
+    userName: mcsmdevftladmin
+    password: WGXE01!FP#dwiJ9i
+    messageApp: mcsm.app.busrealtime.sub
+    messageEndpoint:  mcsm.app.busrealtime.sub.ep
+    messageFormat: mcsm.app.busrealtime.sub.format
+    app:  
+      appName: MCSM
+      msgType: Realtime
+      msgSubtype: Bus
+  router:
+    message:
+      kind: taip
+---
+
+spring:
+  profiles: development
+name: rtvehicle-dev
+environment: development
+realm:
+  udp:
+    port: 1026
+    messageSize: 256
+  ftl:  
+    primaryRealmServer: http://mcsmtftldev01:18080
+    userName: mcsmdevftladmin
+    password: WGXE01!FP#dwiJ9i
+    messageApp:  mcsm.app.busrealtime.sub
+    messageEndpoint:  mcsm.app.busrealtime.sub.ep
+    messageFormat: mcsm.app.busrealtime.sub.format
+    app:  
+      appName: MCSM
+      msgType: Realtime
+      msgSubtype: Bus
+  router:
+    message:
+      kind: taip
+
+    
+---
+
+spring:
+  profiles: test
+name: rtvehicle-test
+environment: test
+realm:
+  udp:
+    port: 32170
+    messageSize: 256
+  ftl:  
+    primaryRealmServer: http://mcsmtftldev01:18080
+    userName: mcsmdevftladmin
+    password: WGXE01!FP#dwiJ9i
+    messageApp:  mcsm.app.busrealtime.sub
+    messageEndpoint:  mcsm.app.busrealtime.sub.ep
+    messageFormat: mcsm.app.busrealtime.sub.format
+    app:  
+      appName: MCSM
+      msgType: Realtime
+      msgSubtype: Bus
+  router:
+    message:
+      kind: taip
+  
+---
+
+spring:
+  profiles: staging
+name: rtvehicle-stg
+environment: staging
+realm:
+  udp:
+    port: 32170
+    messageSize: 256
+  ftl:  
+    primaryRealmServer: http://mcsmtftldev01:18080
+    userName: mcsmdevftladmin
+    password: WGXE01!FP#dwiJ9i
+    messageApp:  mcsm.app.busrealtime.sub
+    messageEndpoint:  mcsm.app.busrealtime.sub.ep
+    messageFormat: mcsm.app.busrealtime.sub.format
+    app:  
+      appName: MCSM
+      msgType: Realtime
+      msgSubtype: Bus
+  router:
+    message:
+      kind: taip
+  
+---
+
+spring:
+  profiles: production
+name: rtvehicle-prod
+environment: production
+realm:
+  udp:
+    port: 32170
+    messageSize: 256
+  ftl:  
+    primaryRealmServer: http://mcsmtftldev01:18080
+    userName: mcsmdevftladmin
+    password: WGXE01!FP#dwiJ9i
+    messageApp:  mcsm.app.busrealtime.sub
+    messageEndpoint:  mcsm.app.busrealtime.sub.ep
+    messageFormat: mcsm.app.busrealtime.sub.format
+    app:  
+      appName: MCSM
+      msgType: Realtime
+      msgSubtype: Bus
+  router:
+    message:
+      kind: taip
+
+
